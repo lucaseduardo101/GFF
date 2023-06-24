@@ -4,6 +4,6 @@ import br.com.fiap.gff.domain.entity.Produto;
 
 public interface ProdutosPort {
     Produto buscar(int id);
-    Boolean criar(Produto produto);
-    Boolean deletar(int id);
+    Produto criar(Produto produto);
+    void deletar(int id);
 }
