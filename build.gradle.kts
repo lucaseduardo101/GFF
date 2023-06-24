@@ -18,6 +18,10 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("mysql:mysql-connector-java:8.0.33")
+	implementation("org.hibernate:hibernate-core:6.2.5.Final")
+	implementation("org.hibernate:hibernate-entitymanager:5.6.15.Final")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
