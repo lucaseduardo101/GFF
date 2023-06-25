@@ -1,8 +1,8 @@
 package br.com.fiap.gff.entrypoint.controller;
 
 
-import br.com.fiap.gff.domain.entity.Produto;
-import br.com.fiap.gff.domain.useCases.produtos.port.ProdutosUseCase;
+import br.com.fiap.gff.domain.entity.Cliente;
+import br.com.fiap.gff.domain.useCases.cadastroCliente.CadastroClienteUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,26 +12,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/cliente")
 public class ClienteController {
     @Autowired
-    private ProdutosUseCase produtosUseCase;
+    private CadastroClienteUseCase clienteUseCase;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Produto> get(@PathVariable int id){
-        Produto produto = produtosUseCase.buscarProduto(id);
-        return ResponseEntity.ok(produto);
+    @RequestMapping(value = "/{cpf}", method = RequestMethod.GET)
+    public ResponseEntity<Cliente> consultarClientePorCpf(@PathVariable String cpf){
+        Cliente cliente = clienteUseCase.buscarCliente(cpf);
+        return ResponseEntity.ok(cliente);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<Produto> post(@RequestBody Produto produtoNovo){
-        Produto produto = produtosUseCase.criarProduto(produtoNovo);
-        return ResponseEntity.ok(produto);
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente novoCliente){
+        Cliente cliente = clienteUseCase.cadastrarCliente(novoCliente);
+        return ResponseEntity.ok(cliente);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Produto> delete(@PathVariable int id){
-        produtosUseCase.deletarProduto(id);
+    public ResponseEntity<Cliente> delete(@PathVariable int id){
+        clienteUseCase.deletarCliente(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    //Mapeando a rota que será responsável por Editar um Cliente.
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    public ResponseEntity<?> atualizarCliente(@RequestBody Cliente cliente){
+        clienteUseCase.atualizarCliente(cliente);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
 
 }

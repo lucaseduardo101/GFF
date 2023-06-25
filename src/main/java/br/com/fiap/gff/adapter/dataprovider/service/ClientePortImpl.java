@@ -1,7 +1,6 @@
 package br.com.fiap.gff.adapter.dataprovider.service;
 
 import br.com.fiap.gff.adapter.dataprovider.entity.ClienteJPA;
-import br.com.fiap.gff.adapter.dataprovider.entity.ProdutoJPA;
 import br.com.fiap.gff.adapter.dataprovider.repository.ClienteRepository;
 import br.com.fiap.gff.domain.entity.Cliente;
 import br.com.fiap.gff.domain.useCases.cadastroCliente.port.ClientePort;
@@ -18,7 +17,12 @@ public class ClientePortImpl implements ClientePort {
 
     @Override
     public Cliente buscar(String cpf) {
-        return null;
+        Optional<ClienteJPA> clienteDb = clienteRepository.findOptionalByCpf(cpf);
+        if (!clienteDb.isPresent()){
+            System.out.println("Cliente não encontrado."); //TODO criar uma exception específica
+            return null;
+        }
+        return clienteDb.get().toEntity();
     }
 
     @Override
@@ -42,7 +46,7 @@ public class ClientePortImpl implements ClientePort {
 
     @Override
     public void deletar(int id) {
-
+        clienteRepository.deleteById(id);
     }
 
     @Override
