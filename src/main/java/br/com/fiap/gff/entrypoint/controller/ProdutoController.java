@@ -2,7 +2,7 @@ package br.com.fiap.gff.entrypoint.controller;
 
 
 import br.com.fiap.gff.domain.entity.Produto;
-import br.com.fiap.gff.domain.useCases.produtos.port.ProdutosUseCase;
+import br.com.fiap.gff.domain.useCases.produtos.ProdutosUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
