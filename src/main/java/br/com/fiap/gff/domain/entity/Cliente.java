@@ -1,12 +1,20 @@
 package br.com.fiap.gff.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Cliente {
+    @JsonProperty("id_cliente")
     int idCliente ;
     String nome;
     String cpf;
     String email;
     String telefone;
     String senha;
+
+    public Cliente() {
+    }
 
     public Cliente(int idCliente, String nome, String cpf, String email, String telefone, String senha) {
         this.idCliente = idCliente;

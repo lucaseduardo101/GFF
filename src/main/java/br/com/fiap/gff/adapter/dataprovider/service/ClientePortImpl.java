@@ -1,6 +1,8 @@
 package br.com.fiap.gff.adapter.dataprovider.service;
 
 import br.com.fiap.gff.adapter.dataprovider.entity.ClienteJPA;
+import br.com.fiap.gff.domain.exception.RecursoJaExisteException;
+import br.com.fiap.gff.domain.exception.RecursoNaoEncontradoException;
 import br.com.fiap.gff.adapter.dataprovider.repository.ClienteRepository;
 import br.com.fiap.gff.domain.entity.Cliente;
 import br.com.fiap.gff.domain.useCases.cadastroCliente.port.ClientePort;
@@ -19,18 +21,16 @@ public class ClientePortImpl implements ClientePort {
     public Cliente buscar(String cpf) {
         Optional<ClienteJPA> clienteDb = clienteRepository.findOptionalByCpf(cpf);
         if (!clienteDb.isPresent()){
-            System.out.println("Cliente não encontrado."); //TODO criar uma exception específica
-            return null;
+            throw new RecursoNaoEncontradoException("Cliente nao encontrado");
         }
         return clienteDb.get().toEntity();
     }
 
     @Override
     public Cliente criar(Cliente cliente) {
-        Optional<ClienteJPA> clienteExistente = clienteRepository.findById(cliente.getIdCliente());
+        Optional<ClienteJPA> clienteExistente = clienteRepository.findOptionalByCpf(cliente.getCpf());
         if (clienteExistente.isPresent()){
-            System.out.println("Cliente já existente.");
-            return null; //TODO criar exception
+            throw new RecursoJaExisteException("Esse cliente já está cadastrado");
         }
         ClienteJPA clienteJPA = new ClienteJPA(
                 cliente.getIdCliente(),
@@ -46,7 +46,16 @@ public class ClientePortImpl implements ClientePort {
 
     @Override
     public void deletar(int id) {
-        clienteRepository.deleteById(id);
+        Cliente clienteExistente = this.buscar(id);
+
+        // Salva a alteração no banco de dados
+        clienteRepository.delete(new ClienteJPA(clienteExistente.getIdCliente(),
+                clienteExistente.getNome(),
+                clienteExistente.getCpf(),
+                clienteExistente.getEmail(),
+                clienteExistente.getTelefone(),
+                clienteExistente.getSenha())  );
+
     }
 
     @Override
@@ -74,8 +83,7 @@ public class ClientePortImpl implements ClientePort {
     private Cliente buscar(int id){
         Optional<ClienteJPA> clienteExistente = clienteRepository.findById(id);
         if (!clienteExistente.isPresent()){
-            System.out.println("Cliente não encontrado."); //TODO criar uma exception específica
-            return null;
+            throw new RecursoNaoEncontradoException("Cliente nao encontrado");
         }
         return clienteExistente.get().toEntity();
     }

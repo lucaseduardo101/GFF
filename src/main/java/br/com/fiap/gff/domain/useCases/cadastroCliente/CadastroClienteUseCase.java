@@ -10,19 +10,20 @@ public class CadastroClienteUseCase {
     @Autowired
     ClientePort clientePort;
 
-    public Cliente cadastrarCliente(Cliente cliente){
+    public Cliente cadastrarCliente(Cliente cliente) {
         return clientePort.criar(cliente);
     }
 
-    public Cliente buscarCliente(String cpf){
+    public Cliente buscarCliente(String cpf) {
         return clientePort.buscar(cpf);
     }
 
+
     public void deletarCliente(int id) {
-        clientePort.deletar(id);
+            clientePort.deletar(id);
     }
 
-    public void atualizarCliente(Cliente cliente){
+    public void atualizarCliente(Cliente cliente) {
         clientePort.atualizar(cliente);
     }
 }
