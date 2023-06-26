@@ -1,10 +1,7 @@
 package br.com.fiap.gff.adapter.dataprovider.entity;
 
 import br.com.fiap.gff.domain.entity.Cliente;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_cliente")
@@ -21,7 +18,7 @@ public class ClienteJPA {
     @Column
     String telefone;
     @Column
-    String senha ;
+    String senha ; //TODO criptografar senha
 
     public ClienteJPA() {
     }

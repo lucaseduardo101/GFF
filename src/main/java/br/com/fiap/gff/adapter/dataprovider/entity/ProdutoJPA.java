@@ -1,19 +1,14 @@
 package br.com.fiap.gff.adapter.dataprovider.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "tb_produto")
 public class ProdutoJPA implements Serializable {
-    @Column()
+    @Column(name = "id_produto")
     @Id
-    private int id_produto;
+    private int idProduto;
     @Column()
     private int estoque;
     @Column()
@@ -21,9 +16,11 @@ public class ProdutoJPA implements Serializable {
     @Column()
     private String descricao;
 
+
+
     public br.com.fiap.gff.domain.entity.Produto toEntity(){
         return new br.com.fiap.gff.domain.entity.Produto(
-                this.id_produto,
+                this.idProduto,
                 this.estoque,
                 this.nome,
                 this.descricao
@@ -31,18 +28,18 @@ public class ProdutoJPA implements Serializable {
     }
 
     public ProdutoJPA(int id_produto, int estoque, String nome, String descricao) {
-        this.id_produto = id_produto;
+        this.idProduto = id_produto;
         this.estoque = estoque;
         this.nome = nome;
         this.descricao = descricao;
     }
 
-    public int getId_produto() {
-        return id_produto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setId_produto(int id_produto) {
-        this.id_produto = id_produto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public int getEstoque() {

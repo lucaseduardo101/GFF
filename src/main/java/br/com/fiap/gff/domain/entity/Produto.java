@@ -1,26 +1,32 @@
 package br.com.fiap.gff.domain.entity;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Produto {
-    private int id_produto;
+    @JsonProperty("id_produto")
+    private int idProduto;
     private int estoque;
     private String nome;
     private String descricao;
 
+    public Produto() {
+    }
+
     public Produto(int id_produto, int estoque, String nome, String descricao) {
-        this.id_produto = id_produto;
+        this.idProduto = id_produto;
         this.estoque = estoque;
         this.nome = nome;
         this.descricao = descricao;
     }
 
-    public int getId_produto() {
-        return id_produto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setId_produto(int id_produto) {
-        this.id_produto = id_produto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public int getEstoque() {

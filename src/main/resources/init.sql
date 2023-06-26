@@ -39,9 +39,19 @@ CREATE TABLE IF NOT EXISTS tb_produto (
         id_produto int PRIMARY KEY AUTO_INCREMENT,
         nome varchar(250) NOT NULL,
         descricao varchar(250),
-        estoque int NOT NULL
+        estoque int NOT NULL,
+        id_categoria int NOT NULL
  );
 
+CREATE TABLE IF NOT EXISTS tb_categoria (
+        id_categoria int PRIMARY KEY AUTO_INCREMENT,
+        descricao varchar(50) NOT NULL
+ );
+
+ALTER TABLE tb_produto
+    ADD CONSTRAINT fk_produto_categoria
+    FOREIGN KEY (id_categoria)
+    REFERENCES tb_categoria (id_categoria) ;
 
 ALTER TABLE tb_pedido
     ADD CONSTRAINT fk_pedido_cliente
@@ -80,3 +90,23 @@ INSERT INTO tb_tipo_pagamento (id_tipo_pagamento,descricao) VALUES (4,"Cartão d
 INSERT INTO tb_tipo_pagamento (id_tipo_pagamento,descricao) VALUES (5,"Cartão de credito");
 INSERT INTO tb_tipo_pagamento (id_tipo_pagamento,descricao) VALUES (6,"Dinheiro vivo");
 
+INSERT INTO tb_categoria (id_categoria, descricao) VALUES (1,"Lanche");
+INSERT INTO tb_categoria (id_categoria, descricao) VALUES (2,"Bebida");
+INSERT INTO tb_categoria (id_categoria, descricao) VALUES (3,"Combo");
+INSERT INTO tb_categoria (id_categoria, descricao) VALUES (4,"Acompanhamento");
+INSERT INTO tb_categoria (id_categoria, descricao) VALUES (5,"Sobremesa");
+
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (1,"Hamburguer Duplo", "Hamburguer com duas carnes queijo e salada", 100, 1);
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (2,"Hamburguer Simples", "Hamburguer com uma carne queijo e salada", 100, 1);
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (3,"Hamburguer Especial", "Hamburguer com duas carnes queijo e salada", 100, 1);
+
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (4,"Refrigerante", "Bebida gasosa", 100, 2);
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (5,"Suco da fruta", "Suco de frutas da polpa", 100, 2);
+
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (6,"Batata Frita", "Batata frita da casa", 100, 4);
+
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (7,"Pudim", "Pudim de leite", 100, 5);
+
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (8,"Combo simples", "Hamburguer simples, 1 bebida, 1 acompanhamento e 1 sobremesa", 100, 3);
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (9,"Combo duplo", "Hamburguer duplo, 1 bebida, 1 acompanhamento e 1 sobremesa", 100, 3);
+INSERT INTO tb_produto (id_produto,nome, descricao, estoque,id_categoria ) VALUES (10,"Combo especial", "Hamburguer especial, 1 bebida, 1 acompanhamento e 1 sobremesa", 100, 3);
