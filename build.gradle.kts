@@ -20,7 +20,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
-
+	implementation("org.springframework.boot:spring-boot-starter-parent:3.1.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 	implementation("mysql:mysql-connector-java:8.0.33")
 	implementation("org.hibernate:hibernate-core:6.2.5.Final")
 	implementation("org.hibernate:hibernate-entitymanager:5.6.15.Final")
