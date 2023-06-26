@@ -5,10 +5,12 @@ import br.com.fiap.gff.domain.exception.RecursoJaExisteException;
 import br.com.fiap.gff.domain.exception.RecursoNaoEncontradoException;
 import br.com.fiap.gff.adapter.dataprovider.repository.ClienteRepository;
 import br.com.fiap.gff.domain.entity.Cliente;
-import br.com.fiap.gff.domain.useCases.cadastroCliente.port.ClientePort;
+import br.com.fiap.gff.domain.useCases.Cliente.port.ClientePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -80,11 +82,26 @@ public class ClientePortImpl implements ClientePort {
                 clienteExistente.getSenha())  );
     }
 
+    @Override
+    public List<Cliente> listarClientes() {
+        List<ClienteJPA> clienteJpa = clienteRepository.findAll();
+
+        return convertListJpaToList(clienteJpa);
+    }
+
     private Cliente buscar(int id){
         Optional<ClienteJPA> clienteExistente = clienteRepository.findById(id);
         if (!clienteExistente.isPresent()){
             throw new RecursoNaoEncontradoException("Cliente nao encontrado");
         }
         return clienteExistente.get().toEntity();
+    }
+    private List<Cliente> convertListJpaToList(List<ClienteJPA> clientesJpa ){
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+
+        for(ClienteJPA clienteJPA: clientesJpa){
+            clientes.add(clienteJPA.toEntity());
+        }
+        return clientes;
     }
 }

@@ -2,12 +2,12 @@ package br.com.fiap.gff.entrypoint.controller.exception;
 
 import java.io.Serializable;
 
-public class StandardError  implements Serializable {
+public class MensagemErro implements Serializable {
     private Integer status;
     private String msg;
     private long timeStamp;
 
-    public StandardError(Integer status, String msg, long timeStamp) {
+    public MensagemErro(Integer status, String msg, long timeStamp) {
         this.status = status;
         this.msg = msg;
         this.timeStamp = timeStamp;

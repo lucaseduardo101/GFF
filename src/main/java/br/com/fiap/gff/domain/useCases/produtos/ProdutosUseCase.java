@@ -5,6 +5,8 @@ import br.com.fiap.gff.domain.useCases.produtos.port.ProdutosPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProdutosUseCase {
     @Autowired
@@ -20,5 +22,13 @@ public class ProdutosUseCase {
 
     public void deletarProduto(int id) {
         produtosPort.deletar(id);
+    }
+
+    public void atualizarProduto(Produto produto){
+        produtosPort.atualizarProduto(produto);
+    }
+
+    public List<Produto> listarProdutos() {
+        return produtosPort.listarProdutos();
     }
 }
