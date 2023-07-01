@@ -23,6 +23,8 @@ O sistema de gerenciamento de fast food tem como objetivo facilitar o controle d
 - 9.1 [Exemplos da função atualizar produto](#Exemplos%20da%20função%20atualizar%20produto)
 10. [Função Forma de Pagemento](#Função%20Forma%20de%20Pagamento)
 - 10.1 [Exemplos da função forma de pagamento](#Exemplos%20da%20função%20de%20pagamento)
+11. [Função Acompanhamento do Pedido](#Função%20Acompanhamento%20do%20Pedido)
+- 11.1 [Exemplos da função acompanhamento do pedido](#Exemplos%20da%20função%20acompanhamento%20do%20pedido)
 
 
 <br>
@@ -310,6 +312,45 @@ Fimse
 <br>
 
 ### **Exemplos da função de pagamento**
+
+```bash
+curl
+```
+
+(anexar imagem aqui)
+
+<br>
+<br>
+
+## **Função Acompanhamento do Pedido**
+
+A função acompanhamento do pedido tem como objetivo mostrar os estágio em que o pedido se encontra sendo eles:
+
+<br>
+
+| Status | Descrição |
+|--- |--- |
+| Recebido | Informa que o pedido feito pelo cliente foi recebido pela cozinha do estabelecimento |
+| Em preparação | Informa que o pedido do cliente está sendo feito |
+| Pronto | Informa que o pedido do cliente foi feito e será revisado |
+| Finalizado | Informa que o pedido do cliente foi finalizado |
+
+<br>
+
+```bash
+Exbir a mensagem do status Recebido para o cliente
+Se Status do pedido for 'Em Preparação'
+    exibir mensagem 'Em Preparação'
+Se Status do pedido for 'Pronto'
+    exibir mensagem 'Pronto'
+Se Status do pedido for 'Finalizado'
+    exibir mensagem 'Finalizado'
+    notificar cliente
+```
+
+<br>
+
+### **Exemplos da função acompanhamento do pedido**
 
 ```bash
 curl
