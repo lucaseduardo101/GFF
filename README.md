@@ -12,9 +12,9 @@ O sistema de gerenciamento de fast food tem como objetivo facilitar o controle d
 3. [Cadastrar Cliente - Função Cadastrar Cliente](#Função%20Cadastrar%20Cliente)
 3. [Produtos](#Produtos)
 4. [Produtos - Função Consultar Produto](#Função%20Consultar%20Produto)
-- 4.1 [Exemplos da função consultar](#Exemplos%20da%20função%20consultar%20produto)
+- 4.1 [Exemplos da função consultar produto](#Exemplos%20da%20função%20consultar%20produto)
 5. [Produtos - Função Cadastrar Produto](#Função%20Cadastrar%20Produto)
-- 5.1 [Exemplos da função cadastrar](#Exemplos%20da%20função%20cadastrar%20produto)
+- 5.1 [Exemplos da função cadastrar produto](#Exemplos%20da%20função%20cadastrar%20produto)
 6. [Produtos - Função Listar Produto](#Função%20Listar%20Produtos)
 - 6.1 [Exemplos da função listar produtos](#Exemplos%20da%20função%20listar%20produtos)
 7. [Produtos - Função Deletar Produto](#Função%20Deletar%20Produto)
@@ -84,11 +84,11 @@ O produto tem como objetivo consultar, cadastrar, listar, deletar e atualizar os
 
 | Função | Responsábilidade da função | Método | Parâmetro (s) | Rota |
 |--- |--- |--- |--- |--- |
-| Consultar | Retornar o produto especificado na busca | GET | {id} | /produto/busca/{id} |
-| Cadastrar | Efetuar o cadastro de um novo produto | POST | {id} {estoque} {nome} {descrição} | /produto/cadastro |
-| Listar | Retorna a lista dos produtos existentes | GET | {id} | /produto/lista/produto |
-| Deletar | Efetuar a deleção do produto especificado | POST | {id} | /produto/remove/{id} |
-| Atualizar | Efetuar edição em um produto especificado | PUT | {id} | /produto/edita/{id} |
+| Consultar Produto | Retornar o produto especificado na busca | GET | {id} | /produto/busca/{id} |
+| Cadastrar Produto | Efetuar o cadastro de um novo produto | POST | {id} {estoque} {nome} {descrição} | /produto/cadastro |
+| Listar Produtos | Retorna a lista dos produtos existentes | GET | {id} | /produto/lista/produto |
+| Deletar Produto | Efetuar a deleção do produto especificado | POST | {id} | /produto/remove/{id} |
+| Atualizar Produto | Efetuar edição em um produto especificado | PUT | {id} | /produto/edita/{id} |
 
 <br>
 <br>
