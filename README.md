@@ -76,7 +76,7 @@ curl
 <br>
 <br>
 
-## Produtos
+## **Produtos**
 
 O produto tem como objetivo consultar, cadastrar, listar, deletar e atualizar os produtos oferecidos aos clientes, cada qual com sua função como demonstradas na tabela abaixo:
 
@@ -93,7 +93,7 @@ O produto tem como objetivo consultar, cadastrar, listar, deletar e atualizar os
 <br>
 <br>
 
-### **Função Consultar Produto**
+## **Função Consultar Produto**
 
 A função consultar produto tem como objetivo informar ao cliente sobre o item informado para a busca.
 
@@ -123,7 +123,7 @@ curl
 <br>
 <br>
 
-### **Função Cadastrar Produto**
+## **Função Cadastrar Produto**
 
 A função cadastrar produto tem como objetivo adicionar um novo cliente na base de dados, facilitando assim sua identificação e a lista de consumo do mesmo.
 
@@ -158,7 +158,7 @@ curl
 <br>
 <br>
 
-### **Função Listar Produtos**
+## **Função Listar Produtos**
 
 A função listar produtors tem como objetivo mostrar ao cliente os produtos oferecidos para consumo.
 
@@ -189,7 +189,7 @@ curl
 <br>
 <br>
 
-### **Função Deletar Produto**
+## **Função Deletar Produto**
 
 A função deletar produto tem como objetivo remover um produto contido na base de dados.
 
@@ -226,7 +226,7 @@ curl
 <br>
 <br>
 
-### **Função Atualizar Produto**
+## **Função Atualizar Produto**
 
 A função atualizar produto tem como objetivo atualizar um produto na base de dados.
 
@@ -259,3 +259,4 @@ curl
 ```
 
 (anexar imagem aqui)
+
