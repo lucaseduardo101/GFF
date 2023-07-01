@@ -24,7 +24,6 @@ O sistema de gerenciamento de fast food tem como objetivo facilitar o controle d
 10. [Função Forma de Pagemento](#Função%20Forma%20de%20Pagamento)
 - 10.1 [Exemplos da função forma de pagamento](#Exemplos%20da%20função%20de%20pagamento)
 11. [Função Acompanhamento do Pedido](#Função%20Acompanhamento%20do%20Pedido)
-- 11.1 [Exemplos da função acompanhamento do pedido](#Exemplos%20da%20função%20acompanhamento%20do%20pedido)
 
 
 <br>
@@ -347,13 +346,3 @@ Se Status do pedido for 'Finalizado'
     exibir mensagem 'Finalizado'
     notificar cliente
 ```
-
-<br>
-
-### **Exemplos da função acompanhamento do pedido**
-
-```bash
-curl
-```
-
-(anexar imagem aqui)
