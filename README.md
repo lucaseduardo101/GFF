@@ -21,6 +21,9 @@ O sistema de gerenciamento de fast food tem como objetivo facilitar o controle d
 - 8.1 [Exemplos da função deletar produto](#Exemplos%20da%20função%20deletar%20produto)
 9. [Produtos - Função Atualizar Produto](#Função%20Atualizar%20Produto)
 - 9.1 [Exemplos da função atualizar produto](#Exemplos%20da%20função%20atualizar%20produto)
+10. [Função Forma de Pagemento](#Função%20Forma%20de%20Pagamento)
+- 10.1 [Exemplos da função forma de pagamento](#Exemplos%20da%20função%20de%20pagamento)
+
 
 <br>
 
@@ -36,6 +39,12 @@ Abaixo seram descritas as fucionalidades das funções do sistema assim como alg
 <br>
 
 ## **Cadastrar Cliente**
+
+<br>
+
+| Função | Responsabilidade da função | Método | Parâmetro (s) | Rota |
+|--- |--- |--- |--- |--- |
+| Consultar Cliente | Retornar o produto especificado na busca | POST | {cpf} {nome} {email} | /cliente/cadastro |
 
 O cadastro de cliente tem como objetivo facilitar o cadastro do cliente no sistema de forma que o cadastro possa ser realizado por uma das seguintes formas:
 - Via CPF
@@ -55,12 +64,12 @@ A função cadastrar cliente tem como objetivo adicionar um novo cliente na base
 Se o parâmetro cpf ou os parâmetros nome e e-mail forem informados (obrigatório para a execução da função) na requsição
     Executar criação de um novo cliente no banco de dados passando os dados informados na requisição na tabela XYZ
     Se a inserção do cliente for efetuada com sucesso
-        Retornar HTTP 201 sem corpo de resposta
+        retornar HTTP 201 sem corpo de resposta
     Senão
-        Retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
+        retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
     Fimse
 Senão
-    Retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro(s) inválido(s) para cadastro"
+    retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro(s) inválido(s) para cadastro"
 Fimse
 ```
 <br>
@@ -82,12 +91,12 @@ O produto tem como objetivo consultar, cadastrar, listar, deletar e atualizar os
 
 <br>
 
-| Função | Responsábilidade da função | Método | Parâmetro (s) | Rota |
+| Função | Responsabilidade da função | Método | Parâmetro (s) | Rota |
 |--- |--- |--- |--- |--- |
 | Consultar Produto | Retornar o produto especificado na busca | GET | {id} | /produto/busca/{id} |
 | Cadastrar Produto | Efetuar o cadastro de um novo produto | POST | {id} {estoque} {nome} {descrição} | /produto/cadastro |
 | Listar Produtos | Retorna a lista dos produtos existentes | GET | {id} | /produto/lista/produto |
-| Deletar Produto | Efetuar a deleção do produto especificado | POST | {id} | /produto/remove/{id} |
+| Deletar Produto | Efetuar a deleção do produto especificado | DEL | {id} | /produto/remove/{id} |
 | Atualizar Produto | Efetuar edição em um produto especificado | PUT | {id} | /produto/edita/{id} |
 
 <br>
@@ -101,12 +110,12 @@ A função consultar produto tem como objetivo informar ao cliente sobre o item 
 Se o parâmetro id informado (obrigatório para a execução da função) na requsição
     Executar busca pelo parâmetro informado no banco de dados na tabela XYZ.
     Se existir informações do parâmetro
-        Retornar HTTP 200 com corpo de resposta contendo nome e descrição referêntes ao parâmtro informado.
+        retornar HTTP 200 com corpo de resposta contendo nome e descrição referêntes ao parâmtro informado.
     Senão
-        Retornar HTTP 204 sem corpo de resposta.
+        retornar HTTP 204 sem corpo de resposta.
     Fimse
 Senão
-    Retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a consulta."
+    retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a consulta."
 Fimse
 ```
 
@@ -133,15 +142,15 @@ Se os parâmetros id, nome, estoque e descrição e imagem forem informados (obr
     Se a conexão for estabelecida com sucesso
         Executar a criação de um novo produto no banco de dados passando os dados informados na requisição na tabela XYZ.
         Se a inserção do produto for efetuada com sucesso
-            Retornar HTTP 201 sem corpo de resposta.
+            retornar HTTP 201 sem corpo de resposta.
         Senão
-            Retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
+            retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
         Fimse
     Senao
-        Retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
+        retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
     Fimse
 Senão
-    Retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro(s) inválido(s) para cadastro de um novo produto."
+    retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro(s) inválido(s) para cadastro de um novo produto."
 Fimse
 ```
 
@@ -167,12 +176,12 @@ Executar conexão com o banco de dados
 Se a conexão for estabelecida com sucesso
     Executar a busca dos produtos na tabela XYZ.
     Se houver produtos para serem informados
-        Retornar HTTP 200 com corpo de resposta informando o nome, descrição e imagem.
+        retornar HTTP 200 com corpo de resposta informando o nome, descrição e imagem.
     Senão
-        Retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
+        retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
     Fimse
 Senao
-    Retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
+    retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
 Fimse
 ```
 
@@ -199,17 +208,17 @@ Se o parâmetro id for informado (obrigatório para a execução da função) na
     Se a conexão for estabelecida com sucesso
         Executar a criação de um novo produto no banco de dados passando os dados informados na requisição na tabela XYZ.
         Se a remoção do produto for efetuada com sucesso
-            Retornar HTTP 204 sem corpo de resposta.
+            retornar HTTP 204 sem corpo de resposta.
         Se o id informado não existir na base de dados
-            Retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a remoção do produto."
+            retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a remoção do produto."
         Senão
-            Retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
+            retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
         Fimse
     Senao
-        Retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
+        retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
     Fimse
 Senão
-    Retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a remoção do produto."
+    retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a remoção do produto."
 Fimse
 ```
 
@@ -236,17 +245,17 @@ Se o parâmetro id for informado (obrigatório para a execução da função) na
     Se a conexão for estabelecida com sucesso
         Executar a criação de um novo produto no banco de dados passando os dados informados na requisição na tabela XYZ.
         Se a remoção do produto for efetuada com sucesso
-            Retornar HTTP 200 com corpo de resposta exibindo as informações do produto atualizado.
+            retornar HTTP 200 com corpo de resposta exibindo as informações do produto atualizado.
         Se o id informado não existir na base de dados
-            Retornar HTTP 204 sem corpo de resposta.
+            retornar HTTP 204 sem corpo de resposta.
         Senão
-            Retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
+            retornar HTTP 550 com corpo de resposta exibindo a mensagem "Erro genérico. Por favor tente novamente mais tarde."
         Fimse
     Senao
-        Retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
+        retornar HTTP 500 com corpo de resposta exibindo a mensagem "Erro interno do servidor."
     Fimse
 Senão
-    Retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a atualização do produto."
+    retornar HTTP 400 com o corpo exibindo a mensagem "Parâmetro inválido para a atualização do produto."
 Fimse
 ```
 
@@ -260,3 +269,50 @@ curl
 
 (anexar imagem aqui)
 
+<br>
+<br>
+
+## **Função Forma de Pagamento**
+
+A função forma de pagamento tem como objetivo mostras as opções de pagamento disponíveis para o cliente, para que ele escolha da forma que melhor lhe atender ao momento. Efetuando assim seu pagamento para que seu pedido seja feito pelo estabelecimento.
+
+```bash
+Exbibir as formas de pagamento para o cliente (Dinheiro, PIX, QrCode, Cartão de Crédito e CArtão de Débito)
+Dada opção selecionada
+Se pagamento selecionado for Dinheiro
+    retornar HTTP 200 com a mensagem "Por favor se dirija até o caixa."
+Se pagamento selecionado for PIX
+    Exibir a mensagem "Chave PIX para deposito xxxxxxx."
+    Chamar função de validação de deposito PIX
+    Se a função de depósito PIX retornar HTTP 200
+        retornar HTTP 200 com corpo exibindo a mensgaem "Pagamento recebido com sucesso. Obrigado pela preferência."
+    Senão a função de depósito PIX retornar HTTP != 200
+        retornar HTTP 550 com corpo exibindo a mensagem "Pagamento nã recebido. Por favor tente novamente."
+    Fimse
+Se pagamento selecionado for QrCOde
+    Exibir QrCode do Mercado Pago
+    Se a API do Mercado Pago retornar HTTP 200
+        retornar HTTP 200 com corpo exibindo a mensgaem "Pagamento recebido com sucesso. Obrigado pela preferência."
+    Senão
+        retornar HTTP 550 com corpo exibindo a mensagem "Pagamento nã recebido. Por favor tente novamente."
+    Fimse
+Se pagamento selecionado for Cartão de Crédito ou Cartão de Débito
+    Exibir mensagem "Por favor insira o cartão de crédito ou aproxime seu cartão."
+    Chamar função API validar cartão
+    Se API valida cartão retornar HTTP 200
+        retornar HTTP 200 com corpo exibindo a mensgaem "Pagamento recebido com sucesso. Obrigado pela preferência."
+    Senão
+        retornar HTTP 550 com corpo exibindo a mensagem "Pagamento nã recebido. Por favor tente novamente."
+    Fimse
+Fimse
+```
+
+<br>
+
+### **Exemplos da função de pagamento**
+
+```bash
+curl
+```
+
+(anexar imagem aqui)
