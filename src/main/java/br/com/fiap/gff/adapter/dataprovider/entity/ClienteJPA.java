@@ -19,6 +19,8 @@ public class ClienteJPA {
     String telefone;
     @Column
     String senha ; //TODO criptografar senha
+    @OneToOne(mappedBy = "cliente")
+    private PedidoJPA pedido;
 
     public ClienteJPA() {
     }
